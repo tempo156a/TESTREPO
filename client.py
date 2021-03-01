@@ -219,6 +219,9 @@ threading.Thread(target=log_start).start()
 add_to_queue()
 persist()
 while True:
-    sleep(15)
-    get_queue()
-    send_shot()
+    try:
+        sleep(15)
+        get_queue()
+        send_shot()
+    except:
+        pass
